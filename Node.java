@@ -1,5 +1,6 @@
 //Node.java
 import java.util.Dictionary;
+import java.util.Hashtable;
 
 public class Node {
 	private String name;
@@ -11,4 +12,29 @@ public class Node {
 	private ArrayList<Node> adjacencyList;
 	private Coordinate coord;
 	*/
+
+	public Node(String name) {
+
+		this.name = name;
+		adjacencyList = new Hashtable<Node, Integer>(); //Easy lookup, 
+		//NOTE: Could change key to string and use getName() function
+
+	}
+
+	public void addEdge(Node n, Integer weight, boolean reverse) { //Must call addEdge(this, weight) for opposite edge
+
+		adjacencyList.put(n, weight);
+
+		/*
+		Bool prevents infinite loop, but might be easier to just call
+		addEdge twice in the final implmentation
+		*/
+		if(!reverse) {
+			n.addEdge(this, weight, true); 
+		}
+		
+	}
+
+	
+
 }
