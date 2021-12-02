@@ -11,7 +11,7 @@ public class GraphGenerator {
 	public static void main(String[] args) {
 		if (args.length != 4) {
 			System.out.println("must have filename, number of nodes, " +
-								"number of edges, and density");
+								"density, and maximum edge weight");
 			System.exit(0);
 		}
 
@@ -29,6 +29,7 @@ public class GraphGenerator {
 			first line is the number of nodes to make
 			the rest of the file are all of the edges along with all of the weights
 		*/
+		generateEdges(numNodes, density, maxWeight);
 		try {
 			FileWriter writer = new FileWriter(fileName);
 				writer.write(numNodes + "\n"); 
@@ -47,12 +48,14 @@ public class GraphGenerator {
 		for (int i = 0; i < numNodes; i++)
 			list.add(i);
 
-		int totalEdges = (int)(numNodes * density);
+		int totalEdges = (int)(numNodes * numNodes * density);
 		int randIndex = (int)(Math.random() * numNodes);
 		int i = numNodes - 1;
 		int node = 0;
 		int node2 = 0;
 		int weight = 0;
+		ArrayList<String> edges = new ArrayList<String>();
+		String check = "";
 		//this loop guarantees that the graph is connected
 		while (i > 0 ) {
 			node = list.get(randIndex);
@@ -61,17 +64,23 @@ public class GraphGenerator {
 			node2 = list.get(randIndex);
 			weight = (int)(Math.random() * maxWeight) + 1;
 			output.add(node + " " + node2 + " " + weight);
+			check = node + " " + node2;
+			edges.add(check);
+			check = node2 + " " + node;
+			edges.add(check);
 			i--;
 			totalEdges--;
 		}
 		//this loop adds more edges to increase the density of the graph
-		ArrayList<String> edges = new ArrayList<String>();
-		String check = "";
+		check = "";
+		String check2 = "";
+		output.add("totalEdges == " + totalEdges);
 		while (totalEdges > 0) {
 			node = (int)(Math.random() * numNodes);
 			node2 = (int)(Math.random() * numNodes);
 			check = node + " " + node2;
-			if (edges.contains(check) || node == node2)
+			check2 = node2 + " " + node;
+			if (edges.contains(check) || edges.contains(check2) || node == node2)
 				continue;
 			edges.add(check);
 			weight = (int)(Math.random() * maxWeight) + 1;
