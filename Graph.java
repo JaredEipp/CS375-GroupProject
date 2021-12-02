@@ -4,10 +4,10 @@ import java.util.ArrayList;
 
 public abstract class Graph implements GraphInterface {
 
-	private List<Node> nodeList;
-	private List<Edge> edgeList;
+	protected List<Node> nodeList;
+	protected List<Edge> edgeList;
 	private List<Edge> MST;
-	private Integer maxNodes;
+	protected Integer maxNodes;
 
 	public Graph(Integer maxNodes) {
 		this.maxNodes = maxNodes;
