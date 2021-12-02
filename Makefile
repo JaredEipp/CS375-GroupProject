@@ -1,0 +1,2 @@
+complile:	
+	javac *.java

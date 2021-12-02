@@ -60,14 +60,14 @@ public abstract class Graph implements GraphInterface {
 		for(Node n : nodeList) {
 			//TODO: Make a set class 
 		}
-		Edge lowest = getShortestPath(true);
+		Edge lowest = getShortestEdge(true);
 		//TODO: find-set functions
 		/*if(find-set(u) != find-set(v)) { 
 			MST.add(lowest);
 			union(u,v);
 		}*/
 		for(int i = 1; i < edgeList.size() / 2; i++) { //Since (u,v) and (v,u) are both included, loop half the size
-			Edge shortest = getShortestPath(false);
+			Edge shortest = getShortestEdge(false);
 			Node src = shortest.getSrc();
 			Node dest = shortest.getDest();
 			/*if(find-set(src) != find-set(dest)) {
@@ -82,6 +82,6 @@ public abstract class Graph implements GraphInterface {
 	//added boolean arg so sorting the edges can be done in this function as well
 	//changed to return the edges, so for sort = true: sort and return root
 	//for false, just return the root and delete, since already sorted
-	public abstract Edge getShortestPath(boolean sort);
+	public abstract Edge getShortestEdge(boolean sort);
 	
 }
