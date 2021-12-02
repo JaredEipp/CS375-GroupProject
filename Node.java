@@ -12,7 +12,7 @@ public class Node {
 	private ArrayList<Node> adjacencyList;
 	private Coordinate coord;
 	*/
-
+	
 	public Node(String name) {
 
 		this.name = name;
@@ -21,16 +21,20 @@ public class Node {
 
 	}
 
-	public void addEdge(Node n, Integer weight, boolean reverse) { //Must call addEdge(this, weight) for opposite edge
+	public String getName() {
+		return name;
+	}
 
-		adjacencyList.put(n, weight);
+	public void addEdge(Node dest, Integer weight, boolean reverse) { //Must call addEdge(this, weight) for opposite edge
+
+		adjacencyList.put(dest, weight);
 
 		/*
 		Bool prevents infinite loop, but might be easier to just call
 		addEdge twice in the final implmentation
 		*/
 		if(!reverse) {
-			n.addEdge(this, weight, true); 
+			dest.addEdge(this, weight, true); 
 		}
 		
 	}
