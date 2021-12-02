@@ -13,40 +13,28 @@ public class Node {
 	private Coordinate coord;
 	*/
 	
-	private String parent; //For DFS, use names for parents
-	private Integer color; //For DFS (-1 is white, 0 is grey, 1 is black)
-
 	public Node(String name) {
 
 		this.name = name;
-		color = -1;
 		adjacencyList = new Hashtable<Node, Integer>(); //Easy lookup, 
 		//NOTE: Could change key to string and use getName() function
 
-	}
-
-	public Integer getColor() {
-		return color;
 	}
 
 	public String getName() {
 		return name;
 	}
 
-	public String getParent() {
-		return parent;
-	}
+	public void addEdge(Node dest, Integer weight, boolean reverse) { //Must call addEdge(this, weight) for opposite edge
 
-	public void addEdge(Node n, Integer weight, boolean reverse) { //Must call addEdge(this, weight) for opposite edge
-
-		adjacencyList.put(n, weight);
+		adjacencyList.put(dest, weight);
 
 		/*
 		Bool prevents infinite loop, but might be easier to just call
 		addEdge twice in the final implmentation
 		*/
 		if(!reverse) {
-			n.addEdge(this, weight, true); 
+			dest.addEdge(this, weight, true); 
 		}
 		
 	}
