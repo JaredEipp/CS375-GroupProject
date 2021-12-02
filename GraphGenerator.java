@@ -74,7 +74,6 @@ public class GraphGenerator {
 		//this loop adds more edges to increase the density of the graph
 		check = "";
 		String check2 = "";
-		output.add("totalEdges == " + totalEdges);
 		while (totalEdges > 0) {
 			node = (int)(Math.random() * numNodes);
 			node2 = (int)(Math.random() * numNodes);
