@@ -40,9 +40,8 @@ public abstract class Graph implements GraphInterface {
 
 	public void DFS() { //Call DFS to add all possible edges to the list, and prevent repeats from appearing which would hinder the heaps
 
-		for(Node n : nodeList) {
+		//All nodes initialized as white already
 
-		}
 
 	}
 

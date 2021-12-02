@@ -12,13 +12,29 @@ public class Node {
 	private ArrayList<Node> adjacencyList;
 	private Coordinate coord;
 	*/
+	
+	private String parent; //For DFS, use names for parents
+	private Integer color; //For DFS (-1 is white, 0 is grey, 1 is black)
 
 	public Node(String name) {
 
 		this.name = name;
+		color = -1;
 		adjacencyList = new Hashtable<Node, Integer>(); //Easy lookup, 
 		//NOTE: Could change key to string and use getName() function
 
+	}
+
+	public Integer getColor() {
+		return color;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public String getParent() {
+		return parent;
 	}
 
 	public void addEdge(Node n, Integer weight, boolean reverse) { //Must call addEdge(this, weight) for opposite edge
