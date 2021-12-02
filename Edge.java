@@ -23,6 +23,12 @@ public class Edge {
 		return weight;
 	}
 
+	public Node getSrc() {
+		return src;
+	}
 
+	public Node getDest() {
+		return dest;
+	}
 
 }

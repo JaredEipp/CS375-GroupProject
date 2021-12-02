@@ -1,20 +1,23 @@
 //Graph.java
 import java.util.List;
+import java.util.ArrayList;
 
 public abstract class Graph implements GraphInterface {
 
 	private List<Node> nodeList;
 	private List<Edge> edgeList;
+	private List<Edge> MST;
 	private Integer maxNodes;
 
 	public Graph(Integer maxNodes) {
 		this.maxNodes = maxNodes;
+		MST = new ArrayList<Edge>();
 		init();
 	}
 
 	public void init() {
-		nodeList = new List<Node>();
-		edgeList = new List<Edge>();
+		nodeList = new ArrayList<Node>();
+		edgeList = new ArrayList<Edge>();
 	}
 
 	//To add nodes, just add to a list
@@ -26,7 +29,7 @@ public abstract class Graph implements GraphInterface {
 	//This is useful with addEdge
 	public boolean checkNode(Node n) {
 		for(Node m : nodeList) {
-			if(n.getName().equals(m.getName()) {
+			if(n.getName().equals(m.getName())) {
 				return true;
 			}
 		}
@@ -40,9 +43,9 @@ public abstract class Graph implements GraphInterface {
 	*/
 	public void addEdge(Node src, Node dest, Integer weight) {
 
-		if(!checknode(src) {
+		if(!checkNode(src)) {
 			addNode(src);
-		}else if(!checknode(dest)) {
+		}else if(!checkNode(dest)) {
 			addNode(dest);
 		}
 		src.addEdge(dest, weight, false); //Adds both edges (u,v) and (v,u) to adjacency lists
@@ -54,10 +57,31 @@ public abstract class Graph implements GraphInterface {
 	public void generateMinSpanningTree() {
 	
 		//Implement Kruskals
+		for(Node n : nodeList) {
+			//TODO: Make a set class 
+		}
+		Edge lowest = getShortestPath(true);
+		//TODO: find-set functions
+		/*if(find-set(u) != find-set(v)) { 
+			MST.add(lowest);
+			union(u,v);
+		}*/
+		for(int i = 1; i < edgeList.size() / 2; i++) { //Since (u,v) and (v,u) are both included, loop half the size
+			Edge shortest = getShortestPath(false);
+			Node src = shortest.getSrc();
+			Node dest = shortest.getDest();
+			/*if(find-set(src) != find-set(dest)) {
+				MST.add(lowest);
+				union(src,dest)
+			}*/
+		}
 	
 	}
 	
 	//NOTE: edgeList contains edges (u,v) and (v,u) so delete both in the respective data structures
-	public abstract void getShortestPath();
+	//added boolean arg so sorting the edges can be done in this function as well
+	//changed to return the edges, so for sort = true: sort and return root
+	//for false, just return the root and delete, since already sorted
+	public abstract Edge getShortestPath(boolean sort);
 	
 }
