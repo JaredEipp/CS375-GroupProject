@@ -36,6 +36,7 @@ public class Driver {
 			//	Graph radix = new Radix(numNodes);
 			//	Graph fibonacci = new Fibonacci(numNodes);
 				Graph simple = new SimpleGraph(numNodes);
+			//	Graph minHeap = new MinHeap(numNodes);
 				while (scanner.hasNextLine()) {
 					String line = scanner.nextLine();
 					String[] arr = line.split(" ");
@@ -45,10 +46,12 @@ public class Driver {
 					//radix.addEdge(src, dest, weight);
 					//fibonacci.addEdge(src, dest, weight);
 					simple.addEdge(src, dest, weight);
+			//		minHeap.addEdge(src, dest, weight);
 				}
 				//radix.generateMinSpanningTree();
 				//fibonacci.generateMinSpanningTree();
 				simple.generateMinSpanningTree();
+			//	minHeap.generateMinSpanningTree();
 				System.out.println("Success");
 			} catch (FileNotFoundException e) {
 				System.out.println("Error reading graph files");

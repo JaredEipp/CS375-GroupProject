@@ -38,19 +38,19 @@ public class MinHeap extends Graph {
 	}
 
 	public void minHeapify(Integer index) {
-		Integer l = (2*(index + 1)) - 1;
-		Integer r = (2*(index + 1) + 1) - 1;
-		Edge current = edgeList.get(index);
-    Edge left = edgeList.get(l);
-		Edge right = edgeList.get(r);
+		Integer l = 2*(index ) + 1;
+		Integer r = 2*(index) + 2;
 		Integer min;
-		if(l <= (edgeList.size() - 1) && left.getWeight() < current.getWeight())
+		if(l <= (edgeList.size() - 1) 
+			&& edgeList.get(l).getWeight() < edgeList.get(index).getWeight())
 		  min = l;
 		else
 			min = index;
-		if(r <= (edgeList.size() - 1) && right.getWeight() < edgeList.get(min).getWeight())
+		if(r <= (edgeList.size() - 1) 
+			&& edgeList.get(r).getWeight() < edgeList.get(min).getWeight())
 			min = r;
 		if(min != index) {
+			Edge current = edgeList.get(index);
 		  edgeList.set(index, edgeList.get(min));
 			edgeList.set(min, current);
 			minHeapify(min);
