@@ -1,9 +1,11 @@
 //Fibonacci.java
 
 public class Fibonacci extends Graph {
+	private FibHelper heap;
 
 	public Fibonacci(int w) {
 		super(w);
+		heap = new FibHelper();
 	}
 	
 	public void init() {
@@ -20,6 +22,7 @@ public class Fibonacci extends Graph {
 
 	public void addEdge(Node src, Node dest, int weight) {
 		super.addEdge(src, dest, weight);
+		heap.insert(new Cell(weight));
 	}
 
 	public void generateMinSpanningTree() {
