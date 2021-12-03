@@ -50,10 +50,11 @@ public class MinHeap extends Graph {
 			min = index;
 		if(r <= (edgeList.size() - 1) && right.getWeight() < edgeList.get(min).getWeight())
 			min = r;
-		if(min != index)
+		if(min != index) {
 		  edgeList.set(index, edgeList.get(min));
 			edgeList.set(min, current);
 			minHeapify(min);
+		}
 	}
 
 	public void buildMinHeap() {
