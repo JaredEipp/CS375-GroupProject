@@ -8,9 +8,11 @@ public abstract class Graph implements GraphInterface {
 	protected List<Edge> edgeList;
 	private List<Edge> MST;
 	protected Integer maxNodes;
+	private SetContainer sc;
 
 	public Graph(Integer maxNodes) {
 		this.maxNodes = maxNodes;
+		sc = new SetContainer();
 		MST = new ArrayList<Edge>();
 		init();
 	}
@@ -58,22 +60,21 @@ public abstract class Graph implements GraphInterface {
 	
 		//Implement Kruskals
 		for(Node n : nodeList) {
-			//TODO: Make a set class 
+			Set s = new Set(); 
+			s.addNode(n);
+			sc.addSet(s);
 		}
 		Edge lowest = getShortestEdge(true);
-		//TODO: find-set functions
-		/*if(find-set(u) != find-set(v)) { 
+		if(sc.sameSet(lowest.getSrc(), lowest.getDest())) { 
 			MST.add(lowest);
-			union(u,v);
-		}*/
+		}
 		for(int i = 1; i < edgeList.size() / 2; i++) { //Since (u,v) and (v,u) are both included, loop half the size
 			Edge shortest = getShortestEdge(false);
 			Node src = shortest.getSrc();
 			Node dest = shortest.getDest();
-			/*if(find-set(src) != find-set(dest)) {
+			if(sc.sameSet(src, dest)) {
 				MST.add(lowest);
-				union(src,dest)
-			}*/
+			}
 		}
 	
 	}

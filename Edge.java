@@ -3,7 +3,6 @@ import java.util.*;
 /*
 Edge class in case we wish to store the edges in the list and heaps
 as a set for easier retrieval.
-TODO: Implement DFS to access all edges, and add to the data structure
 */
 public class Edge {
 
