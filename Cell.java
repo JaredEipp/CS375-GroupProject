@@ -10,6 +10,8 @@ public class Cell {
 	private int degree;
 	private boolean mark; //?
 	private int weight;
+	private Node src;
+	private Node dest;
 
 	public Cell() {
 		parent = null;
@@ -18,16 +20,20 @@ public class Cell {
 		child = null;
 		degree = 0;
 		mark = false;
+		src = null;
+		dest = null;
 		weight = Integer.MAX_VALUE;
 	}
 
-	public Cell(int weight) {
+	public Cell(Node s, Node d, int weight) {
 		parent = null;
 		left = null;
 		right = null;
 		child = null;
 		degree = 0;
 		mark = false;
+		src = s;
+		dest = d;
 		this.weight = weight;
 	}
 
@@ -61,6 +67,14 @@ public class Cell {
 		weight = w;
 	}
 
+	public void setSrc(Node s) {
+		src = s;
+	}
+
+	public void setDest(Node d) {
+		dest = d;
+	}
+
 	//GETTER METHODS
 
 	public Cell getParent() {
@@ -89,5 +103,13 @@ public class Cell {
 
 	public int getWeight() {
 		return weight;
+	}
+
+	public Node getSrc() {
+		return src;
+	}
+
+	public Node getDest() {
+		return dest;
 	}
 }
