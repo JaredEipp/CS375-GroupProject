@@ -79,8 +79,10 @@ public class GraphGenerator {
 			node2 = (int)(Math.random() * numNodes);
 			check = node + " " + node2;
 			check2 = node2 + " " + node;
-			if (edges.contains(check) || edges.contains(check2) || node == node2)
+			if (edges.contains(check) || edges.contains(check2) || node == node2) {
+//				System.out.println("bad guess");
 				continue;
+			}
 			edges.add(check);
 			weight = (int)(Math.random() * maxWeight) + 1;
 			output.add(node + " " + node2 + " " + weight);
