@@ -22,6 +22,10 @@ public abstract class Graph implements GraphInterface {
 		edgeList = new ArrayList<Edge>();
 	}
 
+	public List<Edge> getMST() {
+		return MST;
+	}
+
 	//To add nodes, just add to a list
 	public void addNode(Node n) {
 		nodeList.add(n);
@@ -59,12 +63,21 @@ public abstract class Graph implements GraphInterface {
 	public void generateMinSpanningTree() {
 	
 		//Implement Kruskals
-		for(Node n : nodeList) {
+		int index = 0;
+		for(Edge e : edgeList) {
 			Set s = new Set(); 
-			s.addNode(n);
+			s.addNode(e.getSrc());
 			sc.addSet(s);
+			e.setSrc(get.setRepresentative(n);
+			/* This part properly adds the nodes to their own set and makes themselves their own representative
+			System.out.println("Added Node " + n.getName() + " to its own set");
+			System.out.println("Gave set representative " + n.getRepresentative().getName());
+			*/
+			nodeList.set(index, n);
+			index++;
 		}
 		Edge lowest = getShortestEdge(true);
+		System.out.println("Checking if " + lowest.getSrc().getRepresentative().getName() + " works");
 		if(sc.sameSet(lowest.getSrc(), lowest.getDest())) { 
 			MST.add(lowest);
 		}
@@ -78,6 +91,7 @@ public abstract class Graph implements GraphInterface {
 		}
 	
 	}
+
 	
 	//NOTE: edgeList contains edges (u,v) and (v,u) so delete both in the respective data structures
 	//added boolean arg so sorting the edges can be done in this function as well

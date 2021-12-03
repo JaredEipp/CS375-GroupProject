@@ -12,17 +12,27 @@ public class Node {
 	private ArrayList<Node> adjacencyList;
 	private Coordinate coord;
 	*/
+	private Node representative;
 	
 	public Node(String name) {
 
 		this.name = name;
 		adjacencyList = new Hashtable<Node, Integer>(); //Easy lookup, 
 		//NOTE: Could change key to string and use getName() function
+		representative = null;
 
 	}
 
 	public String getName() {
 		return name;
+	}
+
+	public Node getRepresentative() {
+		return representative;
+	}
+
+	public void setRepresentative(Node n) {
+		representative = n;
 	}
 
 	public void addEdge(Node dest, Integer weight, boolean reverse) { //Must call addEdge(this, weight) for opposite edge

@@ -19,9 +19,10 @@ public class SetContainer {
 		boolean disjoint = true;
 		Set a = null;
 		Set b = null;
-		Node rep_u = u;
-		Node rep_v = v;
-		for(Set s : sets) {
+		Node rep_u = u.getRepresentative();
+		System.out.println("Node " + v.getName());
+		Node rep_v = v.getRepresentative();
+		/*for(Set s : sets) {
 			if(s.find(u)) {
 				rep_u = s.getRep();
 				a = s;
@@ -33,20 +34,44 @@ public class SetContainer {
 				disjoint = false;
 				break;
 			}
+		}*/
+		if(rep_u.getName().equals(rep_v.getName())) {
+			disjoint = false;
 		}
 		if(disjoint) {
-			union(a, b);
+			union(rep_u, rep_v);
 		}
 		return disjoint; //If disjoint, then we add to MST in graph
 	}
 
-	public void union(Set s, Set t) {
+	public void union(Node u, Node v) {
 
-		int index1 = sets.indexOf(s);
+		/*int index1 = sets.indexOf(s);
 		int index2 = sets.indexOf(t);
 		for(Node n : t.getList()) {
 			s.addNode(n);
 			sets.set(index1, s);
+		}
+
+		sets.remove(index2);*/
+		int index1 = -1;
+		int index2 = -1;
+		for(int i = 0; i < sets.size(); i++) {
+			if(sets.get(i).find(u)) {
+				index1 = i;
+			}else if(sets.get(i).find(v)) {
+				index2 = i;
+			}
+			if(index1 != -1 && index2 != -1) {
+				break;
+			}
+		}
+		Set t = null;
+		Set s = sets.get(index2);	
+		for(Node n : t.getList()) {
+			t = sets.get(index1);
+			t.addNode(n);
+			sets.set(index1, t);
 		}
 
 		sets.remove(index2);

@@ -10,6 +10,7 @@ public class Set {
 
 	public Set() {
 		set = new ArrayList<Node>();
+		rep = null;
 	}
 
 	public List<Node> getList() {
@@ -25,17 +26,19 @@ public class Set {
 			rep = n;
 		}
 		set.add(n);
+		n.setRepresentative(rep);
 	}
 
 	public boolean find(Node u) {
-		boolean b = false;
+		/*boolean b = false;
 		for(Node n : set) {
 			if(n.getName().equals(u.getName())) {
 				b = true;
 				break;
 			}
 		}
-		return b;
+		return b;*/
+		return (rep.getName().equals(u.getRepresentative().getName()));
 	}
 
 }

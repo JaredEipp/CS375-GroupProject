@@ -4,6 +4,9 @@ import java.io.File;
 import java.util.ArrayList;
 import java.util.Scanner;
 import java.io.FileNotFoundException;
+import java.io.PrintWriter;
+import java.io.BufferedWriter;
+import java.io.FileWriter;
 
 public class Driver {
 	public static void main(String[] args) {
@@ -32,6 +35,7 @@ public class Driver {
 			try {
 				File inputFile = new File(file);
 				Scanner scanner = new Scanner(inputFile);
+				PrintWriter o = new PrintWriter(new BufferedWriter(new FileWriter(new File(outputFile))));
 				int numNodes = Integer.parseInt(scanner.nextLine());
 			//	Graph radix = new Radix(numNodes);
 			//	Graph fibonacci = new Fibonacci(numNodes);
@@ -50,7 +54,11 @@ public class Driver {
 				//fibonacci.generateMinSpanningTree();
 				simple.generateMinSpanningTree();
 				System.out.println("Success");
-			} catch (FileNotFoundException e) {
+				for(Edge e : simple.getMST()) {
+					o.println("(" + e.getSrc().getName() + "," + e.getDest().getName() + ")");
+				}
+				o.close();
+			} catch (Exception e) {
 				System.out.println("Error reading graph files");
 				e.printStackTrace();
 			}
