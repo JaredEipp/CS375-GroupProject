@@ -71,7 +71,7 @@ public class FibHelper {
 		f3.setTotalCells(f1.getTotalCells() + f2.getTotalCells());
 	}
 
-	public int extractMin() {
+	public Cell extractMin() {
 		Cell ret = min;
 		if (ret != null) {
 			Cell c = ret.getChild();
@@ -95,9 +95,9 @@ public class FibHelper {
 				consolidate();
 			}
 			totalCells--;
-			return ret.getWeight();
+			return ret;
 		}
-		return -1;
+		return null;
 	}
 
 	public void consolidate() {

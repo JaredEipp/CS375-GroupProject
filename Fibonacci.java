@@ -22,7 +22,7 @@ public class Fibonacci extends Graph {
 
 	public void addEdge(Node src, Node dest, int weight) {
 		super.addEdge(src, dest, weight);
-		heap.insert(new Cell(weight));
+		heap.insert(new Cell(src, dest, weight));
 	}
 
 	public void generateMinSpanningTree() {
@@ -30,7 +30,9 @@ public class Fibonacci extends Graph {
 	}
 
 	public Edge getShortestEdge(boolean sort) {
-		//do Someting here
+		Cell ret = heap.extractMin();
+		if (ret != null)
+			return new Edge(ret.getSrc(), ret.getDest(), ret.getWeight());
 		return null;
 	}
 
