@@ -27,8 +27,39 @@ public class MinHeap extends Graph {
 	}
 
 	public Edge getShortestEdge(boolean sort) {
-		//do Someting here
-		return null;
+
+		if(sort) {
+			buildMinHeap();
+			return extractMin();
+		}
+		else
+			return extractMin();
+
+	}
+
+	public void minHeapify(List<Edge> eList, Integer index, Integer s) {
+
+		for(Edge e : edgeList) {
+
+		}
+
+	}
+
+	public void buildMinHeap() {
+
+		for(i = (edgeList.size() / 2) - 1; i >= 0; i--) {
+			minHeapify(edgeList, i, edgeList.size());
+		}
+
+	}
+
+	public Edge extractMin() {
+
+		Edge min = edgeList.get(0);
+		edgeList.remove(0)
+		edgeList.remove(1)
+		return min;
+
 	}
 
 }
