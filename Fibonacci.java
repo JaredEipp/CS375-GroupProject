@@ -5,7 +5,7 @@ public class Fibonacci extends Graph {
 	public Fibonacci(int w) {
 		super(w);
 	}
-
+	
 	public void init() {
 		super.init();
 	}
