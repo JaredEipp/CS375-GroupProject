@@ -1,0 +1,8 @@
+smallSparse.txt
+smallDense.txt
+medSparse.txt
+medAvg.txt
+medDense.txt
+largeSparse.txt
+largeAvg.txt
+largeDense.txt

@@ -67,19 +67,18 @@ public class Driver {
 				output.add("\n");
 				*/
 
-				/*
 				//FIBONACCI HEAP OUTPUT
 				start = System.nanoTime();
 				ArrayList<String> fibonacciTree = fibonacci.generateMinSpanningTree();
 				time = (System.nanoTime() - start) / 1000000.0;
 				output.add(time + "\n");
-				ouptut.addAll(fibonacciTree);
+				output.addAll(fibonacciTree );
 				output.add("\n");
-				*/
 
 				//SIMPLE
 				//simple.generateMinSpanningTree();
 
+				/*
 				//MINHEAP OUTPUT
 				start = System.nanoTime();
 				ArrayList<String> minHeapTree = minHeap.generateMinSpanningTree();
@@ -87,6 +86,7 @@ public class Driver {
 				output.add(time + "\n");
 				output.addAll(minHeapTree);
 				output.add("\n");
+				*/
 
 
 				System.out.println("Success");
@@ -97,7 +97,7 @@ public class Driver {
 		}
 
 		try {
-			FileWriter writer = new FileWriter(outputFile, true);
+			FileWriter writer = new FileWriter(outputFile, false);
 			for (String s : output) 
 				writer.write(s);
 			writer.close();

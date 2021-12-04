@@ -39,8 +39,10 @@ public class Fibonacci extends Graph {
 
 	public Edge getShortestEdge(boolean sort) {
 		Cell ret = heap.extractMin();
-		if (ret != null)
+		if (ret != null) {
+			System.out.println("shortest edge returned non null");
 			return new Edge(ret.getSrc(), ret.getDest(), ret.getWeight());
+		}
 		return null;
 	}
 

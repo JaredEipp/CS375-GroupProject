@@ -74,10 +74,11 @@ public abstract class Graph implements GraphInterface {
 		int v = Integer.parseInt(lowest.getDest().getName());
 		if((ds.find(u) != ds.find(v))) { 
 			MST.add(lowest);
-			System.out.println("Adding (" + u + "," + v + ")");
+			retList.add(lowest.toString() + "\n");
+			//System.out.println("Adding (" + u + "," + v + ")");
 			ds.union(u, v);
 		}else {
-			System.out.println("NOT adding (" + u + "," + v + ")");
+			//System.out.println("NOT adding (" + u + "," + v + ")");
 		}
 		while(edgeList.size() > 0) { //Since (u,v) and (v,u) are both included, loop half the size
 			Edge shortest = getShortestEdge(false);
@@ -85,10 +86,11 @@ public abstract class Graph implements GraphInterface {
 			int b = Integer.parseInt(shortest.getDest().getName());
 			if(ds.find(a) != ds.find(b)) {
 				MST.add(shortest);
-				System.out.println("Adding (" + a + "," + b + ")");
+				retList.add(shortest.toString() + "\n");
+				//System.out.println("Adding (" + a + "," + b + ")");
 				ds.union(a,b);
 			}else {
-				System.out.println("NOT adding (" + u + "," + v + ")");
+				//System.out.println("NOT adding (" + u + "," + v + ")");
 			}
 		}
 		return retList;
