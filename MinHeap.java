@@ -16,6 +16,10 @@ public class MinHeap extends Graph {
 		super.addNode(n);
 	}
 
+	public List<Edge> getMST() {
+		return super.getMST();
+	}
+
 	public boolean checkNode(Node n) {
 		return super.checkNode(n);
 	}
@@ -61,7 +65,7 @@ public class MinHeap extends Graph {
 
 	public void buildMinHeap() {
 
-		for(int i = (edgeList.size() / 2) - 1; i >= 0; i--) {
+		for(int i = edgeList.size() - 1; i >= 0; i--) {
 			minHeapify(i);
 		}
 

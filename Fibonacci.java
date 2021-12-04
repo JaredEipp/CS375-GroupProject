@@ -15,6 +15,10 @@ public class Fibonacci extends Graph {
 		super.init();
 	}
 
+	public List<Edge> getMST() {
+		return super.getMST();
+	}
+
 	public void addNode(Node n) {
 		super.addNode(n);
 	}
