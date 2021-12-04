@@ -44,29 +44,6 @@ public class fib2 {
     insert_Cell(new Cell(src, dest, key));
   }
 
-  public void display() {
-    display(min);
-    System.out.println();
-  }
-
-  private void display(Cell c) {
-    System.out.print("(");
-    if (c == null) {
-      System.out.print(")");
-      return;
-    } else {
-      Cell temp = c;
-      do {
-        System.out.print(temp.getWeight());
-        Cell k = temp.getChild();
-        display(k);
-        System.out.print("->");
-        temp = temp.getRight();
-      } while (temp != c);
-      System.out.print(")");
-    }
-  }
-
   public static void merge_heap(fib2 H1, fib2 H2, fib2 H3) {
     H3.min = H1.min;
 
@@ -85,13 +62,6 @@ public class fib2 {
 
   public int find_min() {
     return this.min.getWeight();
-  }
-
-  private void display_Cell(Cell z) {
-    System.out.println("right: " + ((z.getRight() == null) ? "-1" : z.getRight().getWeight()));
-    System.out.println("left: " + ((z.getLeft() == null) ? "-1" : z.getLeft().getWeight()));
-    System.out.println("child: " + ((z.getChild() == null) ? "-1" : z.getChild().getWeight()));
-    System.out.println("degree " + z.getDegree());
   }
 
   public Cell extractMin() {
@@ -180,78 +150,4 @@ public class fib2 {
     y.setMark(false);
   }
 
-  // Search operation
-  private void find(int key, Cell c) {
-    if (found != null || c == null)
-      return;
-    else {
-      Cell temp = c;
-      do {
-        if (key == temp.getWeight())
-          found = temp;
-        else {
-          Cell k = temp.getChild();
-          find(key, k);
-          temp = temp.getRight();
-        }
-      } while (temp != c && found == null);
-    }
-  }
-
-  public Cell find(int k) {
-    found = null;
-    find(k, this.min);
-    return found;
-  }
-
-  public void decrease_key(int key, int nval) {
-    Cell x = find(key);
-    decrease_key(x, nval);
-  }
-
-  // Decrease key operation
-  private void decrease_key(Cell x, int k) {
-    if (k > x.getWeight())
-      return;
-    x.setWeight(k);
-    Cell y = x.getParent();
-    if (y != null && x.getWeight() < y.getWeight()) {
-      cut(x, y);
-      cascading_cut(y);
-    }
-    if (x.getWeight() < min.getWeight())
-      min = x;
-  }
-
-  // Cut operation
-  private void cut(Cell x, Cell y) {
-    x.getRight().setLeft(x.getLeft());
-    x.getLeft().setRight(x.getRight());
-
-    y.setDegree(y.getDegree() - 1);
-
-    x.setRight(null);
-    x.setLeft(null);
-    insert_Cell(x);
-    x.setParent(null);
-    x.setMark(false);
-  }
-
-  private void cascading_cut(Cell y) {
-    Cell z = y.getParent();
-    if (z != null) {
-      if (y.getMark() == false)
-        y.setMark(true);
-      else {
-        cut(y, z);
-        cascading_cut(z);
-      }
-    }
-  }
-
-  // Delete operations
-  public void delete(Cell x) {
-    decrease_key(x, Integer.MIN_VALUE);
-    Cell p = extractMin();
-  }
 }

@@ -61,10 +61,10 @@ public class Driver {
 				ArrayList<String> radixTree = radix.generateMinSpanningTree();
 				time = (System.nanoTime() - start) / 1000000.0;
 				output.add(time + "\n");
-				if (radixTree.size() < 50) {
+				if (radixTree.size() < 12) {
 					output.addAll(radixTree);
-					output.add("\n");
 				}	
+					output.add("\n");
 
 				
 				//FIBONACCI HEAP OUTPUT
@@ -72,10 +72,10 @@ public class Driver {
 				ArrayList<String> fibonacciTree = fibonacci.generateMinSpanningTree();
 				time = (System.nanoTime() - start) / 1000000.0;
 				output.add(time + "\n");
-				if (fibonacciTree.size() < 50) {
+				if (fibonacciTree.size() < 12) {
 					output.addAll(fibonacciTree );
-					output.add("\n");
 				}
+					output.add("\n");
 				
 			
 				
@@ -84,10 +84,10 @@ public class Driver {
 				ArrayList<String> minHeapTree = minHeap.generateMinSpanningTree();
 				time = (System.nanoTime() - start) / 1000000.0;
 				output.add(time + "\n");
-				if (minHeapTree.size() < 50) {
+				if (minHeapTree.size() < 12) {
 					output.addAll(minHeapTree);
-					output.add("\n");
 				}
+					output.add("\n");
 				
 
 
