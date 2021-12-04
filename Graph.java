@@ -56,7 +56,8 @@ public abstract class Graph implements GraphInterface {
 
 	}
 
-	public void generateMinSpanningTree() {
+	public ArrayList<String> generateMinSpanningTree() {
+		ArrayList<String> retList = new ArrayList<String>();
 	
 		//Implement Kruskals
 		for(Node n : nodeList) {
@@ -67,6 +68,7 @@ public abstract class Graph implements GraphInterface {
 		Edge lowest = getShortestEdge(true);
 		if(sc.sameSet(lowest.getSrc(), lowest.getDest())) { 
 			MST.add(lowest);
+			retList.add(lowest.toString());
 		}
 		for(int i = 1; i < edgeList.size() / 2; i++) { //Since (u,v) and (v,u) are both included, loop half the size
 			Edge shortest = getShortestEdge(false);
@@ -74,9 +76,10 @@ public abstract class Graph implements GraphInterface {
 			Node dest = shortest.getDest();
 			if(sc.sameSet(src, dest)) {
 				MST.add(lowest);
+				retList.add(lowest.toString());
 			}
 		}
-	
+		return retList;
 	}
 	
 	//NOTE: edgeList contains edges (u,v) and (v,u) so delete both in the respective data structures

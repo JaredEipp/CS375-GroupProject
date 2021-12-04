@@ -1,5 +1,7 @@
 //MinHeap.java
 
+import java.util.ArrayList;
+
 public class MinHeap extends Graph {
 
 	public MinHeap(int w) {
@@ -22,8 +24,8 @@ public class MinHeap extends Graph {
 		super.addEdge(src, dest, weight);
 	}
 
-	public void generateMinSpanningTree() {
-		super.generateMinSpanningTree();
+	public ArrayList<String> generateMinSpanningTree() {
+		return super.generateMinSpanningTree();
 	}
 
 	public Edge getShortestEdge(boolean sort) {

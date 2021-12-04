@@ -32,8 +32,8 @@ public class SimpleGraph extends Graph {
 		super.addEdge(src, dest, weight);
 	}
 
-	public void generateMinSpanningTree() {
-		super.generateMinSpanningTree();	
+	public ArrayList<String> generateMinSpanningTree() {
+		return super.generateMinSpanningTree();	
 	}
 	
 	//NOTE: edgeList contains edges (u,v) and (v,u) so delete both in the respective data structures

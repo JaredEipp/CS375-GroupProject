@@ -1,6 +1,7 @@
 //Radix.java
 
 import java.util.Arrays;
+import java.util.ArrayList;
 
 public class Radix extends Graph {
 
@@ -24,8 +25,8 @@ public class Radix extends Graph {
 		super.addEdge(src, dest, weight);
 	}
 
-	public void generateMinSpanningTree() {
-		super.generateMinSpanningTree();
+	public ArrayList<String> generateMinSpanningTree() {
+		return super.generateMinSpanningTree();
 	}
 
 	public Edge extractMin() {
