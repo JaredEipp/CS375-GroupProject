@@ -30,4 +30,8 @@ public class Edge {
 		return dest;
 	}
 
+	public String toString() {
+		return src.getName() + " " + dest.getName() + " " + weight;
+	}
+
 }

@@ -4,6 +4,8 @@ import java.io.File;
 import java.util.ArrayList;
 import java.util.Scanner;
 import java.io.FileNotFoundException;
+import java.io.FileWriter;
+import java.io.IOException;
 
 public class Driver {
 	public static void main(String[] args) {
@@ -28,11 +30,13 @@ public class Driver {
 			e.printStackTrace();
 		}
 
+		ArrayList<String> output = new ArrayList<String>();
 		for (String file : files) {
 			try {
 				File inputFile = new File(file);
 				Scanner scanner = new Scanner(inputFile);
 				int numNodes = Integer.parseInt(scanner.nextLine());
+				output.add(numNodes + "\n");
 			//	Graph radix = new Radix(numNodes);
 			//	Graph fibonacci = new Fibonacci(numNodes);
 				Graph simple = new SimpleGraph(numNodes);
@@ -49,14 +53,30 @@ public class Driver {
 			//		minHeap.addEdge(src, dest, weight);
 				}
 				//radix.generateMinSpanningTree();
+				//output.addAll(radixTree);
+				//output.add("\n");
 				//fibonacci.generateMinSpanningTree();
+				//ouptut.addAll(fibonacciTree);
+				//output.add("\n");
 				simple.generateMinSpanningTree();
 			//	minHeap.generateMinSpanningTree();
+				//output.addAll(minHeapTree);
+				//output.add("\n");
 				System.out.println("Success");
 			} catch (FileNotFoundException e) {
 				System.out.println("Error reading graph files");
 				e.printStackTrace();
 			}
+		}
+
+		try {
+			FileWriter writer = new FileWriter(outputFile, true);
+			for (String s : output) 
+				writer.write(s);
+			writer.close();
+		} catch (IOException e) {
+			System.out.println("Error writing to file");
+			e.printStackTrace();
 		}
 
 	}
