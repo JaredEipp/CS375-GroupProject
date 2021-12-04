@@ -1,5 +1,8 @@
 //MinHeap.java
 
+import java.util.List;
+import java.util.ArrayList;
+
 public class MinHeap extends Graph {
 
 	public MinHeap(int w) {
@@ -12,6 +15,10 @@ public class MinHeap extends Graph {
 
 	public void addNode(Node n) {
 		super.addNode(n);
+	}
+
+	public List<Edge> getMST() {
+		return super.getMST();
 	}
 
 	public boolean checkNode(Node n) {
@@ -59,7 +66,7 @@ public class MinHeap extends Graph {
 
 	public void buildMinHeap() {
 
-		for(int i = (edgeList.size() / 2) - 1; i >= 0; i--) {
+		for(int i = edgeList.size() - 1; i >= 0; i--) {
 			minHeapify(i);
 		}
 

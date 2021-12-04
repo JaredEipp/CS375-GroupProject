@@ -1,5 +1,8 @@
 //Fibonacci.java
 
+import java.util.List;
+import java.util.ArrayList;
+
 public class Fibonacci extends Graph {
 //	private FibHelper heap;
 	private fib2 heap;
@@ -11,6 +14,10 @@ public class Fibonacci extends Graph {
 	
 	public void init() {
 		super.init();
+	}
+
+	public List<Edge> getMST() {
+		return super.getMST();
 	}
 
 	public void addNode(Node n) {

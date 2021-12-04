@@ -1,6 +1,7 @@
 //Driver.java
 
 import java.io.File;
+import java.util.List;
 import java.util.ArrayList;
 import java.util.Scanner;
 import java.io.FileNotFoundException;
@@ -37,10 +38,10 @@ public class Driver {
 				Scanner scanner = new Scanner(inputFile);
 				int numNodes = Integer.parseInt(scanner.nextLine());
 				output.add(numNodes + "\n");
-			//	Graph radix = new Radix(numNodes);
-			//	Graph fibonacci = new Fibonacci(numNodes);
+				Graph radix = new Radix(numNodes);
+				Graph fibonacci = new Fibonacci(numNodes);
 				Graph simple = new SimpleGraph(numNodes);
-			//	Graph minHeap = new MinHeap(numNodes);
+				Graph minHeap = new MinHeap(numNodes);
 				while (scanner.hasNextLine()) {
 					String line = scanner.nextLine();
 					String[] arr = line.split(" ");
@@ -48,9 +49,9 @@ public class Driver {
 					Node dest = new Node(arr[1]);
 					int weight = Integer.parseInt(arr[2]);
 					//radix.addEdge(src, dest, weight);
-					//fibonacci.addEdge(src, dest, weight);
+					fibonacci.addEdge(src, dest, weight);
 					simple.addEdge(src, dest, weight);
-			//		minHeap.addEdge(src, dest, weight);
+					minHeap.addEdge(src, dest, weight);
 				}
 				//radix.generateMinSpanningTree();
 				//output.addAll(radixTree);
@@ -59,9 +60,12 @@ public class Driver {
 				//ouptut.addAll(fibonacciTree);
 				//output.add("\n");
 				simple.generateMinSpanningTree();
-			//	minHeap.generateMinSpanningTree();
-				//output.addAll(minHeapTree);
-				//output.add("\n");
+				//minHeap.generateMinSpanningTree();
+				List<Edge> simpleTree = simple.getMST();
+				for(Edge e : simpleTree) {
+					output.add("(" + e.getSrc().getName() + "," + e.getDest().getName() + ")");
+					output.add("\n");
+				}
 				System.out.println("Success");
 			} catch (FileNotFoundException e) {
 				System.out.println("Error reading graph files");

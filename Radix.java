@@ -1,6 +1,8 @@
 //Radix.java
 
 import java.util.Arrays;
+import java.util.List;
+import java.util.ArrayList;
 
 public class Radix extends Graph {
 
@@ -10,6 +12,10 @@ public class Radix extends Graph {
 
 	public void init() {
 		super.init();
+	}
+
+	public List<Edge> getMST() {
+		return super.getMST();
 	}
 
 	public void addNode(Node n) {

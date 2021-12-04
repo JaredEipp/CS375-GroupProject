@@ -8,11 +8,11 @@ public abstract class Graph implements GraphInterface {
 	protected List<Edge> edgeList;
 	private List<Edge> MST;
 	protected Integer maxNodes;
-	private SetContainer sc;
+	private DisjointSet ds;
 
 	public Graph(Integer maxNodes) {
 		this.maxNodes = maxNodes;
-		sc = new SetContainer();
+		ds = new DisjointSet(maxNodes);
 		MST = new ArrayList<Edge>();
 		init();
 	}
@@ -20,6 +20,10 @@ public abstract class Graph implements GraphInterface {
 	public void init() {
 		nodeList = new ArrayList<Node>();
 		edgeList = new ArrayList<Edge>();
+	}
+
+	public List<Edge> getMST() {
+		return MST;
 	}
 
 	//To add nodes, just add to a list
@@ -59,21 +63,31 @@ public abstract class Graph implements GraphInterface {
 	public void generateMinSpanningTree() {
 	
 		//Implement Kruskals
-		for(Node n : nodeList) {
+		/*for(Node n : nodeList) {
 			Set s = new Set(); 
 			s.addNode(n);
 			sc.addSet(s);
-		}
+		}*/
 		Edge lowest = getShortestEdge(true);
-		if(sc.sameSet(lowest.getSrc(), lowest.getDest())) { 
+		int u = Integer.parseInt(lowest.getSrc().getName());
+		int v = Integer.parseInt(lowest.getDest().getName());
+		if((ds.find(u) != ds.find(v))) { 
 			MST.add(lowest);
+			System.out.println("Adding (" + u + "," + v + ")");
+			ds.union(u, v);
+		}else {
+			System.out.println("NOT adding (" + u + "," + v + ")");
 		}
-		for(int i = 1; i < edgeList.size() / 2; i++) { //Since (u,v) and (v,u) are both included, loop half the size
+		while(edgeList.size() > 0) { //Since (u,v) and (v,u) are both included, loop half the size
 			Edge shortest = getShortestEdge(false);
-			Node src = shortest.getSrc();
-			Node dest = shortest.getDest();
-			if(sc.sameSet(src, dest)) {
-				MST.add(lowest);
+			int a = Integer.parseInt(shortest.getSrc().getName());
+			int b = Integer.parseInt(shortest.getDest().getName());
+			if(ds.find(a) != ds.find(b)) {
+				MST.add(shortest);
+				System.out.println("Adding (" + a + "," + b + ")");
+				ds.union(a,b);
+			}else {
+				System.out.println("NOT adding (" + u + "," + v + ")");
 			}
 		}
 	

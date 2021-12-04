@@ -41,6 +41,7 @@ public class SimpleGraph extends Graph {
 	//changed to return the edges, so for sort = true: sort and return root
 	//for false, just return the root and delete, since already sorted
 	public Edge getShortestEdge(boolean sort) {
+		if(sort) {
 		for (int i = 1; i < edgeList.size(); i++) {
 			int key = edgeList.get(i).getWeight();
 			int j = i-1;
@@ -49,6 +50,7 @@ public class SimpleGraph extends Graph {
 				j--;
 			}
 			edgeList.set(j+1, edgeList.get(i));
+		}
 		}
 		Edge shortest = edgeList.get(0);
 		edgeList.remove(0);
