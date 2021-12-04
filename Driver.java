@@ -41,7 +41,6 @@ public class Driver {
 				output.add(numNodes + "\n");
 				Graph radix = new Radix(numNodes);
 				Graph fibonacci = new Fibonacci(numNodes);
-				Graph simple = new SimpleGraph(numNodes);
 				Graph minHeap = new MinHeap(numNodes);
 				while (scanner.hasNextLine()) {
 					String line = scanner.nextLine();
@@ -51,7 +50,6 @@ public class Driver {
 					int weight = Integer.parseInt(arr[2]);
 					radix.addEdge(src, dest, weight);
 					fibonacci.addEdge(src, dest, weight);
-					simple.addEdge(src, dest, weight);
 					minHeap.addEdge(src, dest, weight);
 				}
 				long start;
@@ -63,9 +61,10 @@ public class Driver {
 				ArrayList<String> radixTree = radix.generateMinSpanningTree();
 				time = (System.nanoTime() - start) / 1000000.0;
 				output.add(time + "\n");
-				output.addAll(radixTree);
-				output.add("\n");
-				
+				if (radixTree.size() < 50) {
+					output.addAll(radixTree);
+					output.add("\n");
+				}	
 
 				
 				//FIBONACCI HEAP OUTPUT
@@ -73,21 +72,22 @@ public class Driver {
 				ArrayList<String> fibonacciTree = fibonacci.generateMinSpanningTree();
 				time = (System.nanoTime() - start) / 1000000.0;
 				output.add(time + "\n");
-				output.addAll(fibonacciTree );
-				output.add("\n");
+				if (fibonacciTree.size() < 50) {
+					output.addAll(fibonacciTree );
+					output.add("\n");
+				}
 				
 			
-				//SIMPLE
-				simple.generateMinSpanningTree();
-
 				
 				//MINHEAP OUTPUT
 				start = System.nanoTime();
 				ArrayList<String> minHeapTree = minHeap.generateMinSpanningTree();
 				time = (System.nanoTime() - start) / 1000000.0;
 				output.add(time + "\n");
-				output.addAll(minHeapTree);
-				output.add("\n");
+				if (minHeapTree.size() < 50) {
+					output.addAll(minHeapTree);
+					output.add("\n");
+				}
 				
 
 
