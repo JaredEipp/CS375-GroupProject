@@ -20,7 +20,6 @@ public class SetContainer {
 		Set a = null;
 		Set b = null;
 		Node rep_u = u.getRepresentative();
-		System.out.println("Node " + v.getName());
 		Node rep_v = v.getRepresentative();
 		/*for(Set s : sets) {
 			if(s.find(u)) {
@@ -38,13 +37,10 @@ public class SetContainer {
 		if(rep_u.getName().equals(rep_v.getName())) {
 			disjoint = false;
 		}
-		if(disjoint) {
-			union(rep_u, rep_v);
-		}
 		return disjoint; //If disjoint, then we add to MST in graph
 	}
 
-	public void union(Node u, Node v) {
+	public List<Node> union(Node u, Node v, List<Node> nodeList) {
 
 		/*int index1 = sets.indexOf(s);
 		int index2 = sets.indexOf(t);

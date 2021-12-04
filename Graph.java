@@ -64,11 +64,11 @@ public abstract class Graph implements GraphInterface {
 	
 		//Implement Kruskals
 		int index = 0;
-		for(Edge e : edgeList) {
+		for(Node n : nodeList) {
 			Set s = new Set(); 
-			s.addNode(e.getSrc());
+			n.setRepresentative(n);
+			s.addNode(n);
 			sc.addSet(s);
-			e.setSrc(get.setRepresentative(n);
 			/* This part properly adds the nodes to their own set and makes themselves their own representative
 			System.out.println("Added Node " + n.getName() + " to its own set");
 			System.out.println("Gave set representative " + n.getRepresentative().getName());
@@ -76,20 +76,44 @@ public abstract class Graph implements GraphInterface {
 			nodeList.set(index, n);
 			index++;
 		}
+
+		Node u = null;
+		Node v = null;
+		int index_u = -1;
+		int index_v = -1;
 		Edge lowest = getShortestEdge(true);
-		System.out.println("Checking if " + lowest.getSrc().getRepresentative().getName() + " works");
-		if(sc.sameSet(lowest.getSrc(), lowest.getDest())) { 
-			MST.add(lowest);
+		for(int i = 0; i < nodeList.size(); i++) {
+			if(lowest.getSrc().getName().equals(nodeList.get(i).getName())) {
+				u = lowest.getSrc();
+				index_u = i;
+			}else if(lowest.getDest().getName().equals(nodeList.get(i).getName())) {
+				v = lowest.getDest();
+				index_v = i;
+			}
 		}
+		if(sc.sameSet(u, v)) { 
+			MST.add(lowest);
+			nodeList = sc.union(u, v, nodeList);
+		}
+		/*
 		for(int i = 1; i < edgeList.size() / 2; i++) { //Since (u,v) and (v,u) are both included, loop half the size
 			Edge shortest = getShortestEdge(false);
 			Node src = shortest.getSrc();
 			Node dest = shortest.getDest();
-			if(sc.sameSet(src, dest)) {
-				MST.add(lowest);
+			Node a = null;
+			Node b = null;
+			for(Node m : nodeList) {
+				if(src.getName().equals(m.getName())) {
+					a = src;
+				}else if(dest.getName().equals(m.getName())) {
+					b = dest;
+				}
+			}
+			if(sc.sameSet(a, b)) {
+				MST.add(shortest);
 			}
 		}
-	
+		*/
 	}
 
 	
