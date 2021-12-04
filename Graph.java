@@ -72,7 +72,7 @@ public abstract class Graph implements GraphInterface {
 		Edge lowest = getShortestEdge(true);
 		int u = Integer.parseInt(lowest.getSrc().getName());
 		int v = Integer.parseInt(lowest.getDest().getName());
-		if((ds.find(u) != ds.find(v))) { 
+		if((ds.find-set(u) != ds.find-set(v))) { 
 			MST.add(lowest);
 			retList.add(lowest.toString() + "\n");
 			//System.out.println("Adding (" + u + "," + v + ")");
@@ -84,7 +84,7 @@ public abstract class Graph implements GraphInterface {
 			Edge shortest = getShortestEdge(false);
 			int a = Integer.parseInt(shortest.getSrc().getName());
 			int b = Integer.parseInt(shortest.getDest().getName());
-			if(ds.find(a) != ds.find(b)) {
+			if(ds.find-set(a) != ds.find-set(b)) {
 				MST.add(shortest);
 				retList.add(shortest.toString() + "\n");
 				//System.out.println("Adding (" + a + "," + b + ")");

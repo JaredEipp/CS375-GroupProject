@@ -37,10 +37,7 @@ public class Radix extends Graph {
 	public Edge extractMin() {
 		//Remove edgeList[0] and wherever the reverse of that edge is
 		Edge m = edgeList.get(0);
-		Edge mInv = new Edge(m.getDest(), m.getSrc(), m.getWeight());
-		int index = edgeList.indexOf(mInv);
 		edgeList.remove(0);
-		edgeList.remove(index);
 		return m;
 	}
 
