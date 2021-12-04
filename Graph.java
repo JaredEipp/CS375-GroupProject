@@ -74,7 +74,7 @@ public abstract class Graph implements GraphInterface {
 			return retList;
 		int u = Integer.parseInt(lowest.getSrc().getName());
 		int v = Integer.parseInt(lowest.getDest().getName());
-		if((ds.find-set(u) != ds.find-set(v))) { 
+		if((ds.find_set(u) != ds.find_set(v))) { 
 			MST.add(lowest);
 			retList.add(lowest.toString() + "\n");
 			//System.out.println("Adding (" + u + "," + v + ")");
@@ -88,7 +88,7 @@ public abstract class Graph implements GraphInterface {
 				return retList;
 			int a = Integer.parseInt(shortest.getSrc().getName());
 			int b = Integer.parseInt(shortest.getDest().getName());
-			if(ds.find-set(a) != ds.find-set(b)) {
+			if(ds.find_set(a) != ds.find_set(b)) {
 				MST.add(shortest);
 				retList.add(shortest.toString() + "\n");
 				//System.out.println("Adding (" + a + "," + b + ")");

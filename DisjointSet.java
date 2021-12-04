@@ -5,13 +5,13 @@ public class DisjointSet {
 	/*Since nodes are classified as numbers from 0 to n-1, can use array with
 	indices as the int of the string names
 	*/
-	int[] depth
+	int[] depth;
 	int[] parent;
 	int size;
 
 	public DisjointSet(int size) {
 		this.size = size;
-		rank = new int[size];
+		depth = new int[size];
 		parent = new int[size];
 		makeSet();
 	}
@@ -25,17 +25,17 @@ public class DisjointSet {
 
 	//Find-set in class, but the parent of a node is the value at its index,
 	//which is the int of the node's name
-	public int find-set(int x) {
+	public int find_set(int x) {
 		if(parent[x] != x) {
-			parent[x] = find(parent[x]);
+			parent[x] = find_set(parent[x]);
 		}
 		return parent[x];
 	}
 
 	public void union(int x, int y) {
 		
-		int xRep = find-set(x);
-		int yRep = find-set(y);
+		int xRep = find_set(x);
+		int yRep = find_set(y);
 
 		/*
 		Cases for when the set for x is either the same depth/size of y, greater than, or less than
