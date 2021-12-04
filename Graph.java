@@ -60,7 +60,8 @@ public abstract class Graph implements GraphInterface {
 
 	}
 
-	public void generateMinSpanningTree() {
+	public ArrayList<String> generateMinSpanningTree() {
+		ArrayList<String> retList = new ArrayList<String>();
 	
 		//Implement Kruskals
 		/*for(Node n : nodeList) {
@@ -90,7 +91,7 @@ public abstract class Graph implements GraphInterface {
 				System.out.println("NOT adding (" + u + "," + v + ")");
 			}
 		}
-	
+		return retList;
 	}
 	
 	//NOTE: edgeList contains edges (u,v) and (v,u) so delete both in the respective data structures

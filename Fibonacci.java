@@ -1,6 +1,5 @@
 //Fibonacci.java
 
-import java.util.List;
 import java.util.ArrayList;
 
 public class Fibonacci extends Graph {
@@ -33,8 +32,8 @@ public class Fibonacci extends Graph {
 		heap.insert(src, dest, weight);
 	}
 
-	public void generateMinSpanningTree() {
-		super.generateMinSpanningTree();
+	public ArrayList<String> generateMinSpanningTree() {
+		return super.generateMinSpanningTree();
 	}
 
 	public Edge getShortestEdge(boolean sort) {

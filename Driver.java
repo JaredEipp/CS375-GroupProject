@@ -7,6 +7,7 @@ import java.util.Scanner;
 import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.util.Date;
 
 public class Driver {
 	public static void main(String[] args) {
@@ -53,19 +54,25 @@ public class Driver {
 					simple.addEdge(src, dest, weight);
 					minHeap.addEdge(src, dest, weight);
 				}
-				//radix.generateMinSpanningTree();
+				long start = System.nanoTime();
+				//ArrayList<String> radixTree = radix.generateMinSpanningTree();
+				double time = (System.nanoTime() - start) / 1000000.0;
+				output.add(time + "\n");
 				//output.addAll(radixTree);
-				//output.add("\n");
-				//fibonacci.generateMinSpanningTree();
+				output.add("\n");
+				start = System.nanoTime();
+				//ArrayList<String> fibonacciTree = fibonacci.generateMinSpanningTree();
+				time = (System.nanoTime() - start) / 1000000.0;
+				output.add(time + "\n");
 				//ouptut.addAll(fibonacciTree);
-				//output.add("\n");
-				simple.generateMinSpanningTree();
-				//minHeap.generateMinSpanningTree();
-				List<Edge> simpleTree = simple.getMST();
-				for(Edge e : simpleTree) {
-					output.add("(" + e.getSrc().getName() + "," + e.getDest().getName() + ")");
-					output.add("\n");
-				}
+				output.add("\n");
+				//simple.generateMinSpanningTree();
+				start = System.nanoTime();
+			//	ArrayList<String> minHeapTree = minHeap.generateMinSpanningTree();
+				time = (System.nanoTime() - start) / 1000000.0;
+				output.add(time + "\n");
+				//output.addAll(minHeapTree);
+				output.add("\n");
 				System.out.println("Success");
 			} catch (FileNotFoundException e) {
 				System.out.println("Error reading graph files");
