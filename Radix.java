@@ -37,10 +37,7 @@ public class Radix extends Graph {
 	public Edge extractMin() {
 		//Remove edgeList[0] and wherever the reverse of that edge is
 		Edge m = edgeList.get(0);
-		Edge mInv = new Edge(m.getDest(), m.getSrc(), m.getWeight());
-		int index = edgeList.indexOf(mInv);
 		edgeList.remove(0);
-		edgeList.remove(index);
 		return m;
 	}
 
@@ -65,7 +62,7 @@ public class Radix extends Graph {
 
 	public void countingSort(int e) {
 		int i = 0;
-		int[] count = new int[10];
+		int[] count = new int[10]; //Using 1 digit [0,9]
 		Edge[] out = new Edge[edgeList.size()];
 		Arrays.fill(count, 0); //Set frequency of digits to zero
 
@@ -73,6 +70,7 @@ public class Radix extends Graph {
 			count[(edgeList.get(i).getWeight() / e) % 10]++;
 		}
 
+		//offset
 		for(i = 1; i < 10; i++) {
 			count[i] += count[i - 1];
 		}
@@ -83,14 +81,14 @@ public class Radix extends Graph {
 		}
 
 		for(i = 0; i < edgeList.size(); i++) {
-			edgeList.set(i, out[i]);
+			edgeList.set(i, out[i]); //Sort based on output for digit x where log(10^x) = x
 		}
 
 	}
 
 	public void sortEdges() {
 
-		int max = getMaxWeight();
+		int max = getMaxWeight(); //Must get the max to determine number of iterations of counting sort
 
 		for(int e = 1; max/e > 0; e *= 10) {
 			countingSort(e);

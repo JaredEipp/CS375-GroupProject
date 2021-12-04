@@ -41,7 +41,7 @@ public class Driver {
 				output.add(numNodes + "\n");
 				Graph radix = new Radix(numNodes);
 				Graph fibonacci = new Fibonacci(numNodes);
-				//Graph simple = new SimpleGraph(numNodes);
+				Graph simple = new SimpleGraph(numNodes);
 				Graph minHeap = new MinHeap(numNodes);
 				while (scanner.hasNextLine()) {
 					String line = scanner.nextLine();
@@ -51,13 +51,13 @@ public class Driver {
 					int weight = Integer.parseInt(arr[2]);
 					radix.addEdge(src, dest, weight);
 					fibonacci.addEdge(src, dest, weight);
-					//simple.addEdge(src, dest, weight);
+					simple.addEdge(src, dest, weight);
 					minHeap.addEdge(src, dest, weight);
 				}
 				long start;
 				double time;
 
-				/*
+				
 				//RADIX SORT OUTPUT
 				start = System.nanoTime();
 				ArrayList<String> radixTree = radix.generateMinSpanningTree();
@@ -65,8 +65,9 @@ public class Driver {
 				output.add(time + "\n");
 				output.addAll(radixTree);
 				output.add("\n");
-				*/
+				
 
+				
 				//FIBONACCI HEAP OUTPUT
 				start = System.nanoTime();
 				ArrayList<String> fibonacciTree = fibonacci.generateMinSpanningTree();
@@ -74,11 +75,12 @@ public class Driver {
 				output.add(time + "\n");
 				output.addAll(fibonacciTree );
 				output.add("\n");
-
+				
+			
 				//SIMPLE
-				//simple.generateMinSpanningTree();
+				simple.generateMinSpanningTree();
 
-				/*
+				
 				//MINHEAP OUTPUT
 				start = System.nanoTime();
 				ArrayList<String> minHeapTree = minHeap.generateMinSpanningTree();
@@ -86,7 +88,7 @@ public class Driver {
 				output.add(time + "\n");
 				output.addAll(minHeapTree);
 				output.add("\n");
-				*/
+				
 
 
 				System.out.println("Success");
