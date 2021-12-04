@@ -1,6 +1,9 @@
 compile:	
 	javac *.java
 
+test:	compile
+	java Driver Tests test.txt testOut.txt
+
 simple:	compile
 	java Driver Tests simpleTest.txt output.txt
 

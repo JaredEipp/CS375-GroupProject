@@ -10,6 +10,7 @@ public class Fibonacci extends Graph {
 	public Fibonacci(int w) {
 		super(w);
 		heap = new fib2();
+	//	heap = new FibHelper();
 	}
 	
 	public void init() {
@@ -30,7 +31,8 @@ public class Fibonacci extends Graph {
 
 	public void addEdge(Node src, Node dest, int weight) {
 		super.addEdge(src, dest, weight);
-		heap.insert(src, dest, weight);
+//		heap.insert(src, dest, weight);
+//		heap.insert(new Cell(src, dest, weight));
 	}
 
 	public ArrayList<String> generateMinSpanningTree() {
@@ -38,9 +40,15 @@ public class Fibonacci extends Graph {
 	}
 
 	public Edge getShortestEdge(boolean sort) {
+		if (sort) {
+			for (Edge e : edgeList) {
+				heap.insert(e.getSrc(), e.getDest(), e.getWeight());
+				//heap.insert(new Cell(e.getSrc(), e.getDest(), e.getWeight()));
+			}
+		}
 		Cell ret = heap.extractMin();
 		if (ret != null) {
-			System.out.println("shortest edge returned non null");
+			edgeList.remove(ret);
 			return new Edge(ret.getSrc(), ret.getDest(), ret.getWeight());
 		}
 		return null;

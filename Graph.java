@@ -70,6 +70,8 @@ public abstract class Graph implements GraphInterface {
 			sc.addSet(s);
 		}*/
 		Edge lowest = getShortestEdge(true);
+		if (lowest == null)
+			return retList;
 		int u = Integer.parseInt(lowest.getSrc().getName());
 		int v = Integer.parseInt(lowest.getDest().getName());
 		if((ds.find(u) != ds.find(v))) { 
@@ -82,6 +84,8 @@ public abstract class Graph implements GraphInterface {
 		}
 		while(edgeList.size() > 0) { //Since (u,v) and (v,u) are both included, loop half the size
 			Edge shortest = getShortestEdge(false);
+			if (shortest == null)
+				return retList;
 			int a = Integer.parseInt(shortest.getSrc().getName());
 			int b = Integer.parseInt(shortest.getDest().getName());
 			if(ds.find(a) != ds.find(b)) {

@@ -73,6 +73,7 @@ public class FibHelper {
 
 	public Cell extractMin() {
 		Cell ret = min;
+		System.out.println("totalCells == " + totalCells);
 		if (ret != null) {
 			Cell c = ret.getChild();
 			Cell k = c;

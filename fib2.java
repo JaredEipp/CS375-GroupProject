@@ -124,8 +124,8 @@ public class fib2 {
 
   public void consolidate() {
     double phi = (1 + Math.sqrt(5)) / 2;
-    int Dofn = (int) (Math.log(this.n) / Math.log(phi));
-    Cell[] A = new Cell[Dofn + 1];
+    int Dofn = (int) ((Math.log(this.n) / Math.log(phi)));
+    Cell[] A = new Cell[Dofn + 4];
     for (int i = 0; i <= Dofn; ++i)
       A[i] = null;
     Cell w = min;
