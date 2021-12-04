@@ -2,6 +2,7 @@
 
 import java.util.Arrays;
 import java.util.ArrayList;
+import java.util.List;
 
 public class Radix extends Graph {
 
